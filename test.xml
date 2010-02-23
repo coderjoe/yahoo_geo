@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?><contentlocation xmlns:yahoo="http://www.yahooapis.com/v1/base.rng" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns="http://wherein.yahooapis.com/v1/schema" xml:lang="en">
+<processingTime>0.001293</processingTime>
+<version> build 091119</version>
+<documentLength>50</documentLength>
+<document>
+<administrativeScope>
+<woeId>12589339</woeId>
+<type>County</type>
+<name><![CDATA[Monroe, NY, US]]></name>
+<centroid>
+<latitude>43.1543</latitude>
+<longitude>-77.6843</longitude>
+</centroid>
+</administrativeScope>
+<geographicScope>
+<woeId>12763246</woeId>
+<type>Zip</type>
+<name><![CDATA[14467, Henrietta, NY, US]]></name>
+<centroid>
+<latitude>43.0433</latitude>
+<longitude>-77.6143</longitude>
+</centroid>
+</geographicScope>
+<extents>
+<center>
+<latitude>43.0538</latitude>
+<longitude>-77.5772</longitude>
+</center>
+<southWest>
+<latitude>43.0179</latitude>
+<longitude>-77.658</longitude>
+</southWest>
+<northEast>
+<latitude>43.0687</latitude>
+<longitude>-77.5706</longitude>
+</northEast>
+</extents>
+<placeDetails>
+<place>
+<woeId>12763246</woeId>
+<type>Zip</type>
+<name><![CDATA[14467, Henrietta, NY, US]]></name>
+<centroid>
+<latitude>43.0538</latitude>
+<longitude>-77.5772</longitude>
+</centroid>
+</place>
+<matchType>1</matchType>
+<weight>1</weight>
+<confidence>10</confidence>
+</placeDetails>
+<referenceList>
+<reference>
+<woeIds>12763246</woeIds>
+<start>-1</start>
+<end>-1</end>
+<isPlaintextMarker>0</isPlaintextMarker>
+<text><![CDATA[]]></text>
+<type>xpath</type>
+<xpath><![CDATA[/meta[1]]]></xpath>
+</reference>
+</referenceList>
+</document>
+</contentlocation>

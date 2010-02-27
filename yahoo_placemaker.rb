@@ -2,9 +2,6 @@ require 'rubygems'
 require 'curb'
 require 'hpricot'
 
-LAT = 43.053771
-LONG = -77.577209
-
 module Yahoo
   API_KEY = 'fPR4YN7V34H6ywhqeSU0scmBtegKO9MQ9.kF42ysDyeJIvZfAQV2zRJH6LUerKRFhYUpyQ--'
 end
@@ -40,9 +37,14 @@ module Yahoo
     end
 
     class Placemark
+      attr_accessor :response, :woeid, :type, :name
       attr_accessor :center, :south_west, :north_east
 
       def initialize( doc )
+        @response = doc
+        @woeid = doc.at( 'geographicScope/woeId' )
+        @type = doc.at('geographicScope/type').inner_html
+        @name = doc.at('geographicScope/name').inner_html
         @center = Point.new( doc.at('extents/center') )
         @south_west = Point.new( doc.at('extents/southWest') )
         @north_east = Point.new( doc.at('extents/northEast') )
@@ -51,7 +53,7 @@ module Yahoo
 
     class Base
       def initialize( api_key )
-        @api_key = appi_key || API_KEY
+        @api_key = api_key || API_KEY
         @curl = CurlClient.new( @api_key )
       end
 

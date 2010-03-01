@@ -16,5 +16,4 @@ module YahooGeo
 end
 
 require 'placemaker/curl_client'
-require 'placemaker/mock_client'
 require 'placemaker/placemark'

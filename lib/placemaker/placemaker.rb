@@ -1,9 +1,8 @@
 module YahooGeo
   module Placemaker
-
     class Query
       def initialize
-        @client = YahooGeo::Placemaker::MockClient.new('response.xml')
+        @client = YahooGeo::placemaker_client
       end
 
       def get( lat, long )

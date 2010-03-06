@@ -13,7 +13,7 @@ module TestYahooGeo
     class TestPlacemark < Test::Unit::TestCase
       context "Given an xml response" do
         setup do
-          @xml = open(File.dirname(__FILE__) + '/response.xml')
+          @xml = open(File.dirname(__FILE__) + '/response.curl')
           @placemark = YahooGeo::Placemaker::Placemark.new(@xml)
         end
 

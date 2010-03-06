@@ -7,25 +7,50 @@ require 'test/unit/testcase'
 require 'test/unit' if $0 == __FILE__
 require 'shoulda'
 require 'yahoo_geo'
-require 'placemaker/file_client'
+require 'fakeweb'
+require 'test/fakeweb_helpers'
+
+LAT = 43.0538
+LONG = -77.5772
 
 module TestYahooGeo
   module TestPlacemaker
     class TestQuery < Test::Unit::TestCase
-      context "Given a valid connection" do
-        setup do
-          YahooGeo::setup do
-            placemaker_client YahooGeo::Placemaker::FileClient.new( 'test/response.xml' )
-          end
+      def register_uri( options )
+        FakeWeb.clean_registry
+        FakeWeb.register_uri(:post, 'http://wherein.yahooapis.com/v1/document', options )
+      end
 
+      def self.should_throw_for( exception, code )
+        instance_eval do
+          should "throw #{exception} for #{code[0]} #{code[1]}" do
+            register_uri( :status => code )
+            assert_raise exception do
+              @query.get( LAT, LONG )
+            end
+          end
+        end
+      end
+
+      context "A valid query object" do
+        setup do
           @query = YahooGeo::Placemaker::Query.new
         end
 
-        should "Return a valid response" do
-          response = @query.get( 1,2 ) #arguments don't matter... file_client
-          assert_not_nil response
+        should "return a valid response for 200" do
+          register_uri( :response => 'test/response.curl' )
+          r = @query.get( LAT, LONG )
+          assert_not_nil r
         end
+
+        should_throw_for YahooGeo::NotFoundError, [404, 'Not Found']
+        should_throw_for YahooGeo::BadRequestError, [400, 'Bad Request']
+        should_throw_for YahooGeo::RequestTooLargeError, [413, 'Request Too Large']
+        should_throw_for YahooGeo::UnsupportedMediaTypeError, [415, 'Unsupported Media Type']
+        should_throw_for YahooGeo::RateLimitError, [999, 'Rate Limited']
+        should_throw_for YahooGeo::UnknownError, [31337, 'Wtf? This is not a real code!']
       end
+
     end
   end
 end

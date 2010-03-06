@@ -23,5 +23,5 @@ end
 require 'placemaker/placemaker'
 
 YahooGeo::setup do
-  placemaker_client YahooGeo::Placemaker::CurlClient
+  placemaker_client YahooGeo::Placemaker::NetHTTPClient
 end

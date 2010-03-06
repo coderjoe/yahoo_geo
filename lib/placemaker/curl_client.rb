@@ -4,9 +4,9 @@ require 'curb'
 module YahooGeo
   module Placemaker
 
-    class CurlClient
+    class CurlClient < BaseClient
       def initialize
-        @curl = Curl::Easy.new('http://wherein.yahooapis.com/v1/document')
+        @curl = Curl::Easy.new( @placemaker_url )
       end
 
       def get( lat, long )
@@ -17,9 +17,15 @@ module YahooGeo
           Curl::PostField.content( 'documentType', 'text/html' ),
           Curl::PostField.content( 'documentContent', "<meta name=\"ICBM\" content=\"#{lat}, #{long}\">" )
         )
-      
-        @curl.body_str
+
+        if @curl.response_code != 200 then
+          print "Erroring!"
+          parse_error( @curl.response_code )
+        else
+          @curl.body_str
+        end
       end
+
     end
 
   end

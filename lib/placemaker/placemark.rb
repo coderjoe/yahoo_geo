@@ -1,13 +1,37 @@
+# = placemark.rb - Yahoo! Geo Placemaker Placemark object
+#
+# Copyright &copy; 2010 Joseph Bauser
+#
+
 require 'rubygems'
 require 'hpricot'
 
 module YahooGeo
   module Placemaker
 
+    # == Overview
+    #
+    # A placemark is a parsed Placemaker response including the
+    # place's WOEID, type, name, and place bounding rectangle
+    #
+    # == Example
+    #
+    #   query = YahooGeo::Placemaker::Query.new
+    #   placemark = query.get( 43.0538, -77.5772 )
+    #
+    #   placemark.woeid => "12589339"
+    #   placemark.type => "Zip"
+    #   placemark.name => "14467, Henrietta, NY, US"
+    #   placemark.center => [ "43.0538", "-77.5772" ]
+    #   placemark.south_west => [ "43.0179", "-77.658" ]
+    #   placemark.north_east => [ "43.0687", "-77.5706" ]
     class Placemark
       attr_accessor :response, :woeid, :type, :name
       attr_accessor :center, :south_west, :north_east
 
+      # Placemark.new( xmlResponse )
+      #
+      # Create a new placemark given a successful response from a Placemaker query
       def initialize( xml )
         doc = Hpricot.XML( xml )
 

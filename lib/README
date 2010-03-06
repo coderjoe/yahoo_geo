@@ -1,0 +1,26 @@
+== YahooGeo
+
+  YahooGeo is a simple API for interfacing with the Yahoo! Geo API
+  It's currently under development and is only used in one or two pet projects of mine.
+
+== Use
+  
+  If you'd like to use YahooGeo you really need only concern yourself with the following components:
+
+  YahooGeo::Placemaker::Query
+  YahooGeo::Placemaker::Placemark
+
+=== Example
+
+  To use the library, just provide it with your API key, and go!
+
+  YahooGeo::setup do
+    api_key 'MY_API_KEY'
+  end
+
+  query = YahooGeo::Placemaker::Query.new
+  query.get( <latitude>, <longitude> )
+
+== Future
+
+  As I require them, I plan on implementing larger portions of the Yahoo Geo API

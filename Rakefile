@@ -10,7 +10,9 @@ begin
     gem.email = "coderjoe@coderjoe.net"
     gem.homepage = "http://github.com/coderjoe/yahoo_geo"
     gem.authors = ["Joseph Bauser"]
-    gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
+    gem.add_development_dependency "shoulda", ">= 2.10.2"
+    gem.add_development_dependency "fakeweb", ">= 1.2.8"
+    gem.add_development_dependency "curb", ">= 0.6.6.0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new

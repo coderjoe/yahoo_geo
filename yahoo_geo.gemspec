@@ -30,12 +30,14 @@ Gem::Specification.new do |s|
      "lib/placemaker/placemaker.rb",
      "lib/placemaker/placemark.rb",
      "lib/yahoo_geo.rb",
+     "lib/yahoogeo.rb",
      "test/fakeweb_helpers.rb",
      "test/helper.rb",
      "test/response.curl",
      "test/test_placemaker.rb",
      "test/test_placemark.rb",
-     "test/test_yahoo_geo.rb"
+     "test/test_yahoo_geo.rb",
+     "yahoo_geo.gemspec"
   ]
   s.homepage = %q{http://github.com/coderjoe/yahoo_geo}
   s.rdoc_options = ["--charset=UTF-8"]

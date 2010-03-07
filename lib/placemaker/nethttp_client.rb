@@ -41,7 +41,6 @@ module YahooGeo
         })
 
         if response.code != '200' then
-          print "Error! #{response.code}"
           parse_error( response.code )
         else
           response.body

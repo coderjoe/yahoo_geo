@@ -34,8 +34,8 @@ module YahooGeo
     #
     # Set the Yahoo! API key
     def api_key(a=nil)
-      @client = a unless a.nil?
-      @client
+      @api_key = a unless a.nil?
+      @api_key
     end
 
     # Configure YahooGeo's information

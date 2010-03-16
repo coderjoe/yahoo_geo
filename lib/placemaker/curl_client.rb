@@ -43,8 +43,10 @@ module YahooGeo
         )
 
         if @curl.response_code != 200 then
-          print "Erroring!"
-          parse_error( @curl.response_code )
+          # there must be a better way to get the response message
+          h = @curl.header_str.split(/\r\n/)[0].split
+          msg = h[2..h.length].join( ' ' )
+          parse_error( @curl.response_code, msg )
         else
           @curl.body_str
         end

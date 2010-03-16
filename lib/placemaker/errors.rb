@@ -4,7 +4,14 @@
 module YahooGeo
   # Error
   # The base error type
-  class Error < RuntimeError; end
+  class Error < RuntimeError; 
+    attr_accessor :code, :message
+
+    def initialize( code, message )
+      @code = code
+      @message = message
+    end
+  end
 
   # BadRequestError
   # HTTP 400 Bad Request

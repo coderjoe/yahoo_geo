@@ -16,7 +16,7 @@ module YahooGeo
       # parse_error( code )
       #
       # Given a HTTP response code, raise the correct YahooGeo error
-      def parse_error( code )
+      def parse_error( code, message )
         raise case code.to_i
               when 400 then YahooGeo::BadRequestError
               when 404 then YahooGeo::NotFoundError
@@ -24,7 +24,7 @@ module YahooGeo
               when 415 then YahooGeo::UnsupportedMediaTypeError
               when 999 then YahooGeo::RateLimitError
               else YahooGeo::UnknownError
-              end
+              end.new( code, message )
       end
     end
   end

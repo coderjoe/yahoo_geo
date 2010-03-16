@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Joseph Bauser"]
-  s.date = %q{2010-03-06}
+  s.date = %q{2010-03-16}
   s.description = %q{YahooGeo is a collection of interfaces to the Yahoo! Geo API}
   s.email = %q{coderjoe@coderjoe.net}
   s.extra_rdoc_files = [

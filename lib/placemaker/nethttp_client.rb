@@ -41,7 +41,7 @@ module YahooGeo
         })
 
         if response.code != '200' then
-          parse_error( response.code )
+          parse_error( response.code, response.message )
         else
           response.body
         end

@@ -4,6 +4,9 @@
 module YahooGeo
   # Error
   # The base error type
+  #
+  # All errors should store the code and message for the HTTP response they
+  # represent. 
   class Error < RuntimeError; 
     attr_accessor :code, :message
 

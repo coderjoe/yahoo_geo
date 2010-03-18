@@ -20,6 +20,15 @@ module TestYahooGeo
               @query.get( LAT, LONG )
             end
           end
+
+          should "properly set the response #{exception} code to #{code[0]} and message tp #{code[1]}" do
+            begin
+              @query.get( LAT, LONG )
+            rescue YahooGeo::Error => error
+              assert_equal code[0], error.code
+              assert_equal code[1], error.message
+            end
+          end
         end
       end
 
